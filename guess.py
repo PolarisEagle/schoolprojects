@@ -7,12 +7,8 @@ loop1 = 1
 loop2 = 2
 restart = 1
 while loop1 == 1:
-    joe = input("Please select the MAXIMUM number (max guessable number):")
+    joe = int(input("Please select the MAXIMUM number (max guessable number):"))
     print(joe)
-    safetycheck = isinstance(joe, int)
-    print(safetycheck)
-    if safetycheck != True:
-        print("INVALID")
     if joe <= 1:
         print("Number must be above 2. Please try again.")
     elif joe >= 10000:
