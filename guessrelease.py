@@ -1,5 +1,5 @@
 import random
-import time as t 
+import time as t
 
 
 
@@ -22,10 +22,11 @@ while input == 0:
     print("🎲 • Number Generated!")
     while input2 == 2:
         number = int(input("❓ • Let's play! Guess a number between one to one hundred..."))
+        guesses = guesses + 1
         if number <= 0:
             print("📉 • Too Low! (hint: the number is MORE than zero. shocker.")
-        elif number => 101:
+        elif number >= 101:
             print("📈 • Too High! (hint: the number is LESS than 101. shocker.")
         elif number = random:
-            print("🎉 • Congrats! You  guess the correct number! It took you".)
+            print("🎉 • Congrats! You  guess the correct number! It took you".guesses)
             input2 == 1
