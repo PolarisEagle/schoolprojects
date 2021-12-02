@@ -2,7 +2,7 @@ import random
 import time as t
 
 '''
-Made by Miles Ng.
+Made by Miles.
 
 P7 Programming & Robotics.
 
