@@ -1,5 +1,12 @@
 import random
+"""
+GUESS.PY
 
+TESTING PROGRAM
+
+THIS PROGRAM IS **NOT** THE PUBLIC RELEASE
+
+"""
 print(".")
 print("..")
 print("...")

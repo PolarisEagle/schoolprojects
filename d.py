@@ -1,7 +1,14 @@
 import random
 import time as t
 
+"""
+GUESS.PY
 
+TESTING PROGRAM
+
+THIS PROGRAM IS **NOT** THE PUBLIC RELEASE
+
+"""
 
 input = 0 
 input2 = 2
