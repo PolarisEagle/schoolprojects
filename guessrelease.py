@@ -1,15 +1,11 @@
 import random
 import time as t 
 
-def inludesval(value):
-    for character in value:
-        if character.isdigit():
-            return True
-    return False
-
 
 
 input = 0 
+input2 = 2
+
 # intro
 print("🎲 • Welcome to the guessing game!")
 t.sleep(2)
@@ -20,7 +16,6 @@ t.sleep(2.5)
 print("🎩 • Enough Talking, let's get started!")
 t.sleep(2)
 
-input2 == 2
 
 while input == 0:
     random = (random.randrange(1,101))
