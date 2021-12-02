@@ -1,18 +1,27 @@
 import random
 import time as t
 
+'''
+Made by Miles Ng.
+
+P7 Programming & Robotics.
+
+12/01/2021
+December 1st, 2021.
+
+'''
 
 input2 = 2
 
-# intro
+# introduction for the game
 print("G • Welcome to the guessing game! | If you are playing in a terminal, you may have to press a key to continue.")
-t.sleep(0)
+t.sleep(3)
 print("G • You play by guessing a number between 1 to 100 and I tell you if you're too low or too high!")
-t.sleep(0)
+t.sleep(3)
 print("G • Simple as that, thanks for playing this!")
-t.sleep(0)
+t.sleep(2)
 print("G • Enough Talking, let's get started!")
-t.sleep(0)
+t.sleep(2)
 
 input6 = 0
 
@@ -25,9 +34,9 @@ while input6 == 0:
         number1 = 0
         number1 = int(input("? • Let's play! Guess a number between one to one hundred..."))
         guesses = guesses + 1
-        print(number1)
-        print(randomnum)
-        print(number1)
+   ##     print(number1)
+   ##     print(randomnum)
+   ##     print(number1)
         if number1 <= 0:
             print("G • Too Low! (hint: the number is MORE than zero. shocker.")
         elif number1 >= 101:
