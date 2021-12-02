@@ -3,7 +3,6 @@ import time as t
 
 
 
-input = 0 
 input2 = 2
 
 # intro
@@ -16,35 +15,36 @@ t.sleep(2.5)
 print("G • Enough Talking, let's get started!")
 t.sleep(2)
 
+input6 = 0
 
-while input == 0:
+while input6 == 0:
     randomnum = (random.randrange(1,101))
     print("G • Number Generated!")
     while input2 == 2:
-        number = int(input("? • Let's play! Guess a number between one to one hundred..."))
+        number1 = int(input("? • Let's play! Guess a number between one to one hundred..."))
         guesses = guesses + 1
-        if number <= 0:
+        if number1 <= 0:
             print("G • Too Low! (hint: the number is MORE than zero. shocker.")
-        elif number >= 101:
+        elif number1 >= 101:
             print("G • Too High! (hint: the number is LESS than 101. shocker.")
-        elif number == randomnum:
+        elif number1 == randomnum:
             print("G • Congrats! You  guess the correct number! It took you".guesses)
             input2 = 1
             endloop = 0
             while endloop == 0:
-                number = int(input("Would you like to play again? Y/N."))
-                if number == "Y" or "y" or "yes" or "Yes":
+                number1 = int(input("Would you like to play again? Y/N."))
+                if number1 == "Y" or "y" or "yes" or "Yes":
                     endloop == 1
-                    input = 0
+                    input6 = 0
                     print("G • Restarting Game!")
-                elif number == "N" or "n" or "No" or "no":
+                elif number1 == "N" or "n" or "No" or "no":
                     endloop == 3
-                    input = 2
+                    input6 = 2
                     print("G • Thanks for Playing!")
                     print("G • Quitting Game!")
                     quit()
-        elif number > randomnum:
-            print("G • Sorry! Your guess of ".guesse," is Too High.")
-        elif number < randomnum:
-            print("G • Sorry! Your guess of ".guesse," is Too Low.")
+        elif number1 > randomnum:
+            print("G • Sorry! Your guess of ".guesses," is Too High.")
+        elif number1 < randomnum:
+            print("G • Sorry! Your guess of ".guesses," is Too Low.")
         
