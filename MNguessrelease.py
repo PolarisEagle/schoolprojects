@@ -11,7 +11,7 @@ December 1st, 2021.
 
 '''
 
-input2 = 2
+NoRegen = 2
 
 # introduction for the game
 print("G • Welcome to the guessing game! | If you are playing in a terminal, you may have to press a key to continue.")
@@ -22,14 +22,14 @@ print("G • Simple as that, thanks for playing this!")
 t.sleep(2)
 print("G • Enough Talking, let's get started!")
 t.sleep(2)
-input6 = 0
-while input6 == 0:
+GameLoop = 0
+while GameLoop == 0:
     randomnum = (random.randrange(1,101))
     print("G • Number Generated!")
     guesses = 0
-    input2 = 2
+    NoRegen = 2
     num1 = 0
-    while input2 == 2:
+    while NoRegen == 2:
         num1 = int(input("? • Guess a number between one to one hundred..."))
         guesses = guesses + 1
    ##     print(number1)
@@ -41,18 +41,18 @@ while input6 == 0:
             print("G • Too High! (hint: the number is LESS than 101. shocker.")
         elif num1 == randomnum:
             print("G • Congrats! You  guess the correct number! It took:",guesses,"guesses.")
-            input2 = 1
+            NoRegen = 1
             endloop = 0
             while endloop == 0:
                 num11 = input("Would you like to play again? Y/N.")
                 if num11 == "Y":
                     endloop = 1
-                    input6 = 0
+                    GameLoop = 0
                     num11 = 1
                     print("G • Restarting Game!")
                 elif num11 == "N":
                     endloop = 3
-                    input6 = 2
+                    GameLoop = 2
                     num11 = 0
                     print("G • Thanks for Playing!")
                     print("G • Quitting Game!")
