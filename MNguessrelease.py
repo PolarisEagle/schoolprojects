@@ -30,10 +30,14 @@ while GameLoop == 0:
     NoRegen = 2
     num1 = 0
     while NoRegen == 2:
-        num1 = int(input("? • Guess a number between one to one hundred..."))
+        try: 
+            num1 = int(input("? • Guess a number between one to one hundred..."))
+        except ValueError:
+            print("that is not a number, try again")
+        ##num1 = int(input("? • Guess a number between one to one hundred..."))
         guesses = guesses + 1
    ##     print(number1)
-        print(randomnum)
+        ##print(randomnum)
    ##     print(number1)
         if num1 <= 0:
             print("G • Too Low! (hint: the number is MORE than zero. shocker.")
