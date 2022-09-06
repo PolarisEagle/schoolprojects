@@ -7,4 +7,8 @@ ENTERING AN INVALID VALUE THAT ISN'T AN INTEGER WILL **CRASH** THE PROGRAM, PLEA
 Program made by Miles
 12/1/2021
 December 1st, 2021.
+<<<<<<< Updated upstream
 Programming and Robotics, P7.
+=======
+Programming and Robotics, P7.
+>>>>>>> Stashed changes
