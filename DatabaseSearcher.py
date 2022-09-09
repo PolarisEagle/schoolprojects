@@ -3,15 +3,7 @@ import time as t
 
 josh = "e"
 josad = "eas"
-'''
-Made by Miles..
 
-P7 Programming & Robotics.
-
-12/01/2021
-December 1st, 2021.
-
-'''
 
 print("connecting to database...")
 print("connected in... 93ms!")
