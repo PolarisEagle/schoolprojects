@@ -2,6 +2,15 @@
 #   to describe what each section of code is doing
 
 # import turtle module
+
+'''
+Miles 
+
+P1 CS P
+
+9/9/2022
+'''
+
 import turtle as t
 
 # create turtle object
