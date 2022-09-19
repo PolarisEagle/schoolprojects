@@ -1,6 +1,16 @@
 #   a113_tower.py
 #   Modify this code in VS Code to alternate the colors of the 
 #   floors every three floors
+
+'''
+Miles 
+
+P1 CS P
+
+9/9/2022
+'''
+
+
 import turtle as trtl
 import random
 wn = trtl.Screen()
