@@ -1,13 +1,10 @@
-#   a113_tower.py
-#   Modify this code in VS Code to alternate the colors of the 
-#   floors every three floors
 
 '''
 Miles 
 
 P1 CS P
 
-9/9/2022
+9/19/2022
 '''
 
 
@@ -29,6 +26,7 @@ y = -150
 num_floors = 7 # number of floors
 buildings = 3 # number of buildings
 spacing = 100 # how far the buildings are from each other
+output = True # output when building is drawn and rgb colors
               # minimum is 50
 
 #DO NOT CHANGE 
@@ -47,7 +45,8 @@ for floor in range(looptimes):
   color1 = int(random.randrange(0, 255))
   color2 = int(random.randrange(0, 255))
   color3 = int(random.randrange(0, 255))
-  print(color1,color2,color3)
+  if output == True:
+    print(color1,color2,color3)
   # set placement and color of turtle
   painter.penup()
   painter.goto(x, y)
@@ -72,6 +71,7 @@ for floor in range(looptimes):
   painter.penup()
   y = y + 5
   painter.goto(x, y)
-  print("floor3 drawn")
-
+  if output == True:
+    print("floor3 drawn")
+print("FINISHED")
 wn.mainloop()
