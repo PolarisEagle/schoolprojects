@@ -1,19 +1,22 @@
 
+
+
 '''
 Miles 
-
 P1 CS P
-
 9/19/2022
 '''
 
-
-import turtle as trtl
+try:
+  import turtle as trtl
+except:
+  input("this program will probably break")
 import random
 wn = trtl.Screen()
-
-wn.colormode(255)
-
+try:
+  wn.colormode(255)
+except:
+  input('we just prevented an error. This compiler does not need/support colormode')
 painter = trtl.Turtle()
 painter.speed(0)
 painter.pensize(5)
