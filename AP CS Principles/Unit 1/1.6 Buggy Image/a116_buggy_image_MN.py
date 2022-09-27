@@ -4,17 +4,19 @@ import turtle as trtl
 # a less useful variable name x is used
 turtle = trtl.Turtle()
 turtle.pensize(40)
-turtle.circle(20)
-w = 6
-y = 70
-z = 380 / w
+turtle.goto(0,0)
+#turtle.circle(20)
+legs = 8 
+leglength = 70
+spacing = 360 / legs
 turtle.pensize(5)
-n = 0
-while (n < w):
+legsmade = 0
+#makes legs
+while (legsmade < legs):
   turtle.goto(0,0)
-  turtle.setheading(z*n)
-  turtle.forward(y)
-  n = n + 1
+  turtle.setheading(spacing*legsmade)
+  turtle.forward(leglength)
+  legsmade = legsmade + 1
 turtle.hideturtle()
 wn = trtl.Screen()
 wn.mainloop()
