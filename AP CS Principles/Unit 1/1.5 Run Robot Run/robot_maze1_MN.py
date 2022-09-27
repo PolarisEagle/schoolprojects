@@ -27,10 +27,7 @@ def turn_left():
 #----- init screen
 wn = trtl.Screen()
 wn.setup(width=screen_w, height=screen_h)
-try:
-  robot_image = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 1\1.5 Run Robot Run\robot.gif'
-except:
-  input("there was an error getting robot.gif,")
+robot_image = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 1\1.5 Run Robot Run\robot.gif'
 wn.addshape(robot_image)
 
 #----- init robot
