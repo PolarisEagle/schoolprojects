@@ -1,4 +1,9 @@
 #   a116_buggy_image.py
+'''
+Miles 
+P1 CS P
+9/27/2022
+'''
 import turtle as trtl
 # instead of a descriptive name of the turtle such as painter,
 # a less useful variable name x is used
