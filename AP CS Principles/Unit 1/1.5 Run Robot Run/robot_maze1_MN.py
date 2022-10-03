@@ -72,11 +72,17 @@ input('press ENTER to run the next maze')
 trtl.clearscreen()
 restart()
 wn.bgpic(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 1\1.5 Run Robot Run\maze3.png')
-for step in range (4):
+for step in range (2):
+  robot.setheading(90)
   move()
   robot.setheading(0)
   move()
+robot.pencolor("orchid")
+for step in range (2):
   robot.setheading(90)
+  move()
+  robot.setheading(0)
+  move()
 #---- end robot movement 
 
 wn.mainloop()
