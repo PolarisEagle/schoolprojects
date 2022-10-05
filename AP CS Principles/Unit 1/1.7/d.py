@@ -1,6 +1,14 @@
-#   a117_traversing_turtles.py
-#   Add code to make turtles move in a circle and change colors.
+'''
+Miles Ng
+P1 CS P
+10/5/2022
+'''
+x = 1080
+y = 1920
 import turtle as trtl
+wn = trtl.Screen()
+wn.screensize(x,y)
+
 
 def colortrack():
   global colortracker
@@ -12,8 +20,8 @@ def colortrack():
 my_turtles = []
 print(type(my_turtles))
 # use interesting shapes and colors
-turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic"]
-turtle_colors = ["red", "blue", "green", "orange", "purple", "gold"]
+turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle"]
+turtle_colors = ["red", "blue", "green", "orange", "purple"]
 
 for s in turtle_shapes:
   t = trtl.Turtle(shape=s)
@@ -54,5 +62,4 @@ for t2 in my_turtles:
   
   start_x = start_x + 25
   start_y = start_y + 25
-wn = trtl.Screen()
 wn.mainloop()
