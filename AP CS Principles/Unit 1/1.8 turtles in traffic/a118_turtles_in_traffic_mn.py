@@ -1,6 +1,8 @@
-#   a118_turtles_in_traffic.py
-#   Move turtles horizontally and vertically across screen.
-#   Stopping turtles when they collide.
+'''
+Miles Ng
+P1 CS P
+10/7/2022
+'''
 import turtle as trtl
 import time as t
 x = 1080
@@ -61,6 +63,8 @@ for step in range(100):
   for v in vert_turtles:
       v.forward(3)
   makepositive(h,v)
+  if (abs(hx - vx) + abs(hy - vy) < 50):
+    h.backward(10)
   '''  
   if (abs(hx - vx) + abs(hy - vy) < 50):
   while (abs(hx - vx) + abs(hy - vy) < 50):
