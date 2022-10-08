@@ -63,6 +63,7 @@ for step in range(100):
   makepositive(h,v)
   if (abs(hx - vx) + abs(hy - vy) < 50):
     while (abs(hx - vx) + abs(hy - vy) < 50):
+      t.sleep(1)
       if (abs(h.xcor() - v.xcor()) < 30):
         h.backward(10)
         if (abs(h.xcor() - v.xcor()) < 30):
