@@ -11,20 +11,6 @@ wn.screensize(x, y)
 horiz_turtles = []
 vert_turtles = []
 
-def makepositive(h,v):
-  global hx,hy,vx,vy
-  hx = h.xcor()
-  hy = h.ycor()
-  vx = v.xcor()
-  vy = v.ycor()
-  if hx < 0:
-    hx = hx/-1 
-  if hy < 0:
-    hy = hy/-1
-  if vx < 0:
-    vx = vx/-1
-  if vy < 0:
-    vy = vy/-1
 # use interesting shapes and colors
 turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic"]
 horiz_colors = ["red", "blue", "green", "orange", "purple", "gold"]
@@ -54,22 +40,24 @@ vt.goto
 t.sleep(1)
 ht.goto
 
+
+
 step = 0
 for step in range(100):
   for h in horiz_turtles:
-      h.forward(3)
-  for v in vert_turtles:
-      v.forward(3)
-  makepositive(h,v)
-  if (abs(hx - vx) + abs(hy - vy) < 50):
-    while (abs(hx - vx) + abs(hy - vy) < 50):
-      if (abs(h.xcor() - v.xcor()) < 30):
-        h.backward(10)
-        if (abs(h.xcor() - v.xcor()) < 30):
-         v.backward(10)
-  print(hx, hy, vx, hx)
+    for v in vert_turtles:
+      hx = h.xcor()
+      vy = v.ycor()
+      hy = h.ycor()
+      vx = v.xcor()    
+      if (abs(hx - vx) > 30 and abs(hy - vy) > 30):
+        if hx < 250:
+          h.forward(3)
+          v.forward(3)
+      else:
+        h.forward(3)
   print(abs(h.xcor() - v.xcor()))
-  if (abs(h.xcor() - v.xcor()) < 20):
+  if (abs(h.xcor() - v.xcor()) < 10):
     print("removed", v)
     vert_turtles.remove(v)
     print("removed", h)
