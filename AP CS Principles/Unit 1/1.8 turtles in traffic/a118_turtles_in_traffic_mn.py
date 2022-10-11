@@ -45,7 +45,7 @@ ht.goto
 
 
 step = 0
-for step in range(100):
+for step in range(200):
   for h in horiz_turtles:
     for v in vert_turtles:
       hx = h.xcor()
@@ -55,11 +55,13 @@ for step in range(100):
       if (abs(hx - vx) > 30 and abs(hy - vy) > 30):
         if hx < 250:
           h.forward(3)
-          v.forward(3)
+        v.forward(3)
       else:
-        h.forward(3)
+        if (abs(hx - vx) > 30):
+          h.backward(3)
   print(abs(h.xcor() - v.xcor()))
-  if (abs(h.xcor() - v.xcor()) < 10):
+  if (abs(h.xcor() - v.xcor()) < 20):
+    print(abs(h.xcor() - v.xcor()) + abs(h.xcor() - v.ycor() < 20))
     print("removed", v)
     vert_turtles.remove(v)
     print("removed", h)
