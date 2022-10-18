@@ -95,5 +95,6 @@ def countdown():
 #-----events----------------
 spot.onclick(spot_clicked)
 wn = trtl.Screen()
+wn.bgcolor('purple')
 wn.ontimer(countdown, counter_interval) 
 wn.mainloop()
