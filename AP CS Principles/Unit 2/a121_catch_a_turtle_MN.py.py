@@ -8,6 +8,7 @@ P1 CS P
 from re import A
 import turtle as trtl
 import random as rand
+import time as t
 #-----game configuration----
 spot_color = "pink"
 spot_shape = "circle"
@@ -36,7 +37,16 @@ counter.goto(0,220)
 counter.pd()
 
 font_setup = ("Arial", 20, "normal")
+
+wn = trtl.Screen()
 #-----game functions--------
+def loadgame():
+    global timer, timer_up, score, wn
+    wn.bgcolor('yellow')
+    score = 0
+    timer_up = False 
+    timer = 5
+    counter.write("Click on the Circle to play" , align="center", font=font_setup)
 def spot_clicked(x,y):
     '''
     parameters: x,y
@@ -45,7 +55,11 @@ def spot_clicked(x,y):
     Will see if the player clicked the turtle and will increase the score accordingly.
     '''
     update_score()
+    change_color()
     change_position()
+    change_size()
+    if timer == 5:
+        countdown()
 def change_position():
     '''
     parameters: none
@@ -53,6 +67,10 @@ def change_position():
     
     Changes the position of turtle to a random spot.
     '''
+    if timer_up == True:
+        score_writer.clear()
+        spot.hideturtle()
+        return
     spot.penup()
     spot.hideturtle()
     new_xpos = rand.randint(-250, 250)
@@ -60,6 +78,18 @@ def change_position():
     spot.goto(new_xpos,new_ypos)
     spot.pendown()
     spot.showturtle()
+def change_color():
+    color1 = rand.randint(0,255)
+    color2 = rand.randint(0,255)
+    color3 = rand.randint(0,255)
+
+    spot.fillcolor(color1,color2,color3)
+    spot.stamp()
+    spot.fillcolor("Pink")
+def change_size():
+    size = rand.uniform(0.5,5)
+    print(size)
+    spot.turtlesize(size)
 def update_score():
     '''
     parameters: none
@@ -67,7 +97,7 @@ def update_score():
     
     This updates the score of the player.
     '''
-    global score
+    global score, score_writer
     if timer_up != True:
         score += 1
     else:
@@ -92,9 +122,12 @@ def countdown():
     timer -= 1
     counter.getscreen().ontimer(countdown, counter_interval) 
 
-#-----events----------------
+#-----events---------------
+try:
+  wn.colormode(255)
+except:
+  print('we just prevented an error. This compiler does not need/support colormode')
+loadgame()
+t.sleep(0.5)
 spot.onclick(spot_clicked)
-wn = trtl.Screen()
-wn.bgcolor('purple')
-wn.ontimer(countdown, counter_interval) 
 wn.mainloop()
