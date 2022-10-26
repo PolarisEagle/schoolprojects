@@ -9,11 +9,14 @@ from re import A
 import turtle as trtl
 import random as rand
 import time as t
+leaderboard_file_name = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\a122_leaderboard.txt'
+import leaderboard as lb
 #-----game configuration----
 spot_color = "pink"
 spot_shape = "circle"
 spot_shapesize = 5
 score = 0
+player_name = input("What is your name?")
 #-----initialize turtle-----
 spot = trtl.Turtle()
 spot.shape(spot_shape)
@@ -44,8 +47,8 @@ def loadgame():
     global timer, timer_up, score, wn
     wn.bgcolor('yellow')
     score = 0
-    timer_up = False 
     timer = 5
+    timer_up = False 
     counter.write("Click on the Circle to play" , align="center", font=font_setup)
 def spot_clicked(x,y):
     '''
@@ -113,6 +116,7 @@ def countdown():
     score_writer.clear()
     counter.write("Game Over! Your Final Score Was " + scorestring , align="center", font=font_setup)
     timer_up = True
+    manage_leaderboard()
     spot.hideturtle()
   else:
     if timer == 1:
@@ -121,7 +125,23 @@ def countdown():
         counter.write(str(timer) + " Seconds Remaining", align="center", font=font_setup)
     timer -= 1
     counter.getscreen().ontimer(countdown, counter_interval) 
+    # manages the leaderboard for top 5 scorers
+def manage_leaderboard():
 
+  global score
+  global spot
+
+  # get the names and scores from the leaderboard file
+  leader_names_list = lb.get_names(leaderboard_file_name)
+  leader_scores_list = lb.get_scores(leaderboard_file_name)
+
+  # show the leaderboard with or without the current player
+  if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
+    lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
+    lb.draw_leaderboard(True, leader_names_list, leader_scores_list, spot, score)
+
+  else:
+    lb.draw_leaderboard(False, leader_names_list, leader_scores_list, spot, score)
 #-----events---------------
 try:
   wn.colormode(255)
