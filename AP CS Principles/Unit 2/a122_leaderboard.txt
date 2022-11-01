@@ -1,5 +1,0 @@
-bob,1
-chad,2
-billy,4
-noob,0
-pro,10
