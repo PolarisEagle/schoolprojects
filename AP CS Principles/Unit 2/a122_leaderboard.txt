@@ -1,5 +1,5 @@
-Pat,50
-Jack,42
-Jill,38
-Macky,59
-Check,50
+bob,1
+chad,2
+billy,4
+noob,0
+pro,10

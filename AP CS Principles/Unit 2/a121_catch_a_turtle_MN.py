@@ -5,11 +5,19 @@ P1 CS P
 '''
 # a121_catch_a_turtle.py
 #-----import statements-----
+from msilib.schema import File
 from re import A
 import turtle as trtl
 import random as rand
 import time as t
-leaderboard_file_name = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\a122_leaderboard.txt'
+try:
+  leaderboard_file_name = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\a122_leaderboard.txt'
+except FileNotFoundError:
+  print('warn, file path not found')
+  try:
+    leaderboard_file_name = r'a122_leaderbaord.txt'
+  except FileNotFoundError:
+    input("unable to run program, please manually change the file path of the leaderboard.")
 import leaderboard as lb
 #-----game configuration----
 spot_color = "pink"
