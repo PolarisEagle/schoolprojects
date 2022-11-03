@@ -27,7 +27,9 @@ def draw_an_A():
   drawer.goto(posx - 18,posy - 50)
   drawer.pd()
   wn.tracer(True)
-  drawer.write("A", font=("Arial", 55, "bold")) 
+  letter = random.uniform(0,25)
+  letters = alphabet[letter]
+  drawer.write(, font=("Arial", 55, "bold")) 
 def move(shape,direction):
   global posx,posy,apple
   posx = shape.xcor()
