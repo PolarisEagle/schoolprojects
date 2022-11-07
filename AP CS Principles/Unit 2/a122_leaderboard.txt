@@ -1,5 +1,0 @@
-Pat,50
-Jack,42
-Jill,38
-Macky,59
-Check,50
