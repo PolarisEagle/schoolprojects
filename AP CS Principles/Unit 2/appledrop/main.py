@@ -29,7 +29,7 @@ def draw_an_A():
   wn.tracer(True)
   letter = random.uniform(0,25)
   letters = alphabet[letter]
-  drawer.write(, font=("Arial", 55, "bold")) 
+  drawer.write(letters , font=("Arial", 55, "bold")) 
 def move(shape,direction):
   global posx,posy,apple
   posx = shape.xcor()
