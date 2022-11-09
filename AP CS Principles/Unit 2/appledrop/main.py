@@ -23,12 +23,13 @@ except Exception:
   wn.bgpic('background.gif')
 number_of_apples = 5
 apple = trtl.Turtle()
-
+speedsetting = 1
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
 def draw_apple(active_apple):
   active_apple.shape(apple_image)
   wn.update()
+'''
 def draw_an_A(whichapple):
   posx = apple.xcor()
   posy = apple.ycor()
@@ -40,16 +41,16 @@ def draw_an_A(whichapple):
   drawer.pd()
   wn.tracer(True)
   drawer.write("a" , font=("Arial", 55, "bold")) 
+'''
 def move(shape,direction):
-  global posx,posy,apple
+  global posx,posy,apple,speedsetting
   posx = shape.xcor()
   posy = shape.ycor()
   if direction == "drop":
-    draw_an_A()
+#   draw_an_A()
     print('a')
     shape.pu()
     shape.goto(posx, -120)
-    shape.pd()
   elif direction == "nodrop":
     shape.goto(posx, posx -30)
     tm.sleep(1)
@@ -58,10 +59,12 @@ def move(shape,direction):
 #TODO Create a function that takes a turtle as its parameter and gives that turtle (apple)
 # a new location on the tree, only if the list of letters is not empty. Associate the 
 # turtle with a new letter selected at random from the list of letters
-def NewLocation():
+def NewLocation(applewhich):
   randomx = random.uniform(-200,200)
   randomy = random.uniform(-50,150)
-  apple.goto(randomx,randomy)
+  applewhich.speed(0)
+  applewhich.goto(randomx,randomy)
+  applewhich.speed(speedsetting)
 #TODO Create a function that takes a turtle (apple) and its corresponding letter from the letter
 # list and draws that letter on that turtle (apple)
 
@@ -74,32 +77,61 @@ def NewLocation():
 # add the new apples to a list of apples to be used in the rest of the program.
 # The loop below executes the correct number of times by using the range() function
 # to create a list of numbers to iterate over.
-for i in range(0, number_of_apples - 1):
-  wn.addshape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+for i in range(0, 1):
+  print('adding shapes')
  # apple = trtl.Turtle()
- # apple.speed(0)
+ # apple.speed(speedsetting)
  # apple.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
  # apple.pu()
   appleat = trtl.Turtle()
-  appleat.speed(0)
-  appleat.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  appleat.speed(speedsetting)
+  try:
+    appleat.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    appleat.shape('apple.gif')
   appleat.pu()
   applebt = trtl.Turtle()
-  applebt.speed(0)
-  applebt.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  applebt.speed(speedsetting)
+  try:
+    applebt.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    applebt.shape('apple.gif')
   applebt.pu()
   applect = trtl.Turtle()
-  applect.speed(0)
-  applect.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  applect.speed(speedsetting)
+  try:
+    applect.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    applect.shape('apple.gif')
   applect.pu()
   appledt = trtl.Turtle()
-  appledt.speed(0)
-  appledt.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  appledt.speed(speedsetting)
+  try:
+    appledt.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    appledt.shape('apple.gif')
   appledt.pu()
   appleet = trtl.Turtle()
-  appleet.speed(0)
-  appleet.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  appleet.speed(speedsetting)
+  try:
+    appleet.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    appleet.shape('apple.gif')
   appleet.pu()
+  appleft = trtl.Turtle()
+  appleft.speed(speedsetting)
+  try:
+    appleft.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    appleft.shape('apple.gif')
+  appleft.pu()
+  applegt = trtl.Turtle()
+  applegt.speed(speedsetting)
+  try:
+    applegt.shape(r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif')
+  except Exception:
+    applegt.shape('apple.gif')
+  applegt.pu()
 
 
 #TODO Create a function that takes a letter as its parameter, uses that letter to retrieve the
@@ -110,101 +142,168 @@ for i in range(0, number_of_apples - 1):
 # to see if the given letter is in the list of letters; if it is, it should drop the corresponding
 # apple.
 def applea(mode):
-  global appleat
+  global appleat,drawera
   if mode == 1:
+      NewLocation(appleat)
       posx = appleat.xcor()
       posy = appleat.ycor()
-      drawer = trtl.Turtle()
-      drawer.hideturtle()
-      drawer.color("blue")
-      drawer.pu()
-      drawer.goto(posx - 18,posy - 50)
-      drawer.pd()
+      drawera = trtl.Turtle()
+      drawera.hideturtle()
+      drawera.color("blue")
+      drawera.pu()
+      drawera.goto(posx - 18,posy - 50)
       wn.tracer(True)
-      drawer.write("a" , font=("Arial", 55, "bold")) 
+      drawera.write("a" , font=("Arial", 55, "bold")) 
   elif mode == 2:
-      move(applea,"drop")
-      drawer.clear()
+      move(appleat,"drop")
+      drawera.clear()
       tm.sleep(1)
-      mode(1)
+      applea(1)
 def appleb(mode):
+  global drawerb
   if mode == 1:
+      NewLocation(applebt)
       posx = applebt.xcor()
       posy = applebt.ycor()
-      drawer = trtl.Turtle()
-      drawer.hideturtle()
-      drawer.color("blue")
-      drawer.pu()
-      drawer.goto(posx - 18,posy - 50)
-      drawer.pd()
+      drawerb = trtl.Turtle()
+      drawerb.hideturtle()
+      drawerb.color("blue")
+      drawerb.pu()
+      drawerb.goto(posx - 18,posy - 50)
       wn.tracer(True)
-      drawer.write("b" , font=("Arial", 55, "bold")) 
+      drawerb.write("b" , font=("Arial", 55, "bold")) 
   elif mode == 2:
-      move(appleb,"drop")
+      drawerb.clear()
+      move(applebt,"drop")
+      tm.sleep(1)
+      appleb(1)
 def applec(mode):
-  global applect
+  global applect,drawerc
   if mode == 1:
+      NewLocation(applect)
       posx = applect.xcor()
       posy = applect.ycor()
-      drawer = trtl.Turtle()
-      drawer.hideturtle()
-      drawer.color("blue")
-      drawer.pu()
-      drawer.goto(posx - 18,posy - 50)
-      drawer.pd()
+      drawerc = trtl.Turtle()
+      drawerc.hideturtle()
+      drawerc.color("blue")
+      drawerc.pu()
+      drawerc.goto(posx - 18,posy - 50)
       wn.tracer(True)
-      drawer.write("c" , font=("Arial", 55, "bold")) 
+      drawerc.write("c" , font=("Arial", 55, "bold")) 
   elif mode == 2:
-      move(applec,"drop")
+      drawerc.clear()
+      move(applect,"drop")
+      tm.sleep(1)
+      applec(1)
 def appled(mode):
+  global appledt,drawerd
   if mode == 1:
-      posx = appled.xcor()
-      posy = appled.ycor()
-      drawer = trtl.Turtle()
-      drawer.hideturtle()
-      drawer.color("blue")
-      drawer.pu()
-      drawer.goto(posx - 18,posy - 50)
-      drawer.pd()
+      NewLocation(appledt)
+      posx = appledt.xcor()
+      posy = appledt.ycor()
+      drawerd = trtl.Turtle()
+      drawerd.hideturtle()
+      drawerd.color("blue")
+      drawerd.pu()
+      drawerd.goto(posx - 18,posy - 50)
       wn.tracer(True)
-      drawer.write("d" , font=("Arial", 55, "bold")) 
+      drawerd.write("d" , font=("Arial", 55, "bold")) 
   elif mode == 2:
-      move(appled,"drop")
+      drawerd.clear()
+      move(appledt,"drop")
+      tm.sleep(1)
+      appled(1)
 def applee(mode):
+  global drawere
   if mode == 1:
-      posx = applee.xcor()
-      posy = applee.ycor()
-      drawer = trtl.Turtle()
-      drawer.hideturtle()
-      drawer.color("blue")
-      drawer.pu()
-      drawer.goto(posx - 18,posy - 50)
-      drawer.pd()
+      NewLocation(appleet)
+      posx = appleet.xcor()
+      posy = appleet.ycor()
+      drawere = trtl.Turtle()
+      drawere.hideturtle()
+      drawere.color("blue")
+      drawere.pu()
+      drawere.goto(posx - 18,posy - 50)
       wn.tracer(True)
-      drawer.write("e" , font=("Arial", 55, "bold")) 
+      drawere.write("e" , font=("Arial", 55, "bold")) 
   elif mode == 2:
-      move(applee,"drop")
-def fireall(mode):
+      drawere.clear()
+      move(appleet,"drop")
+      tm.sleep(1)
+      applee(1)
+def applef(mode):
+  global drawerf 
   if mode == 1:
-    applea(2)
-    appleb(2)
-    applec(2)
-    appled(2)
-    applee(2)
+      NewLocation(appleft)
+      posx = appleft.xcor()
+      posy = appleft.ycor()
+      drawerf = trtl.Turtle()
+      drawerf.hideturtle()
+      drawerf.color("blue")
+      drawerf.pu()
+      drawerf.goto(posx - 18,posy - 50)
+      wn.tracer(True)
+      drawerf.write("f" , font=("Arial", 55, "bold")) 
+  elif mode == 2:
+      drawerf.clear()
+      move(appleft,"drop")
+      tm.sleep(1)
+      applef(1)
+def appleg(mode):
+  global drawerg
+  if mode == 1:
+      NewLocation(applegt)
+      posx = applegt.xcor()
+      posy = applegt.ycor()
+      drawerg = trtl.Turtle()
+      drawerg.hideturtle()
+      drawerg.color("blue")
+      drawerg.pu()
+      drawerg.goto(posx - 18,posy - 50)
+      wn.tracer(True)
+      drawerg.write("g" , font=("Arial", 55, "bold")) 
+  elif mode == 2:
+      drawerg.clear()
+      move(applegt,"drop")
+      tm.sleep(1)
+      appleg(1)
+def fireall(mode):
+  applea(mode)
+  appleb(mode)
+  applec(mode)
+  appled(mode)
+  applee(mode)
+  applef(mode)
+  appleg(mode)
 def appleapressed():
   applea(2)
+def applebpressed():
+  appleb(2)
+def applecpressed():
+  applec(2)
+def appledpressed():
+  appled(2)
+def appleepressed():
+  applee(2)
+def applefpressed():
+  applef(2)
+def applegpressed():
+  appleg(2)
 #TODO use the onkeypress method of wn to correlate the functions you defined above with each
 # of the letters that the user might type.
 # onkeypress requires that you name one function that must take
 # no arguments to be called when the specified key is pressed.
 def listener():
   wn.onkeypress(appleapressed,'a')
+  wn.onkeypress(applebpressed,'b')
+  wn.onkeypress(applecpressed,'c')
+  wn.onkeypress(appledpressed,'d')
+  wn.onkeypress(appleepressed,'e')
+  wn.onkeypress(applefpressed,'f')
+  wn.onkeypress(applegpressed,'g')
   print('a')
 #-----function calls-----
-randomx = random.uniform(-200,200)
-randomy = random.uniform(-50,150)
-apple.goto(randomx,randomy)
-draw_apple(apple)
+fireall(1)
 listener()
 wn.listen()
 trtl.mainloop()
