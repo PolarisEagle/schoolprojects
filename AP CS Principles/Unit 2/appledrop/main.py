@@ -9,14 +9,17 @@ import time as tm
 import random
 
 #-----setup-----
-apple_image = r"C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif" # Store the file name of your shape
-alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 wn = trtl.Screen()
-wn.setup(width=1.0, height=1.0)
 try:
-  wn.addshape(apple_image) # Make the screen aware of the new file
+  wn.addshape(r"C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif")
+  apple_image = r"C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\apple.gif" # Store the file name of your shape
+   # Make the screen aware of the new file
 except Exception:
   wn.addshape("apple.gif")
+  apple_image = "apple.gif"
+alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+wn.setup(width=1.0, height=1.0)
+
 try:
   wn.bgpic(r"C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\background.gif")
 except Exception:
