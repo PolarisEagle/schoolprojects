@@ -25,7 +25,7 @@ try:
 except Exception:
   wn.bgpic('background.gif')
 number_of_apples = 5
-apple = trtl.Turtle()
+#apple = trtl.Turtle()
 speedsetting = 1
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
@@ -135,8 +135,25 @@ for i in range(0, 1):
   except Exception:
     applegt.shape('apple.gif')
   applegt.pu()
-
-
+  appleat.speed(0)
+  applebt.speed(0)
+  applect.speed(0)
+  appledt.speed(0)
+  appleet.speed(0)
+  appleft.speed(0)
+  applegt.speed(0)
+  appleat.goto(100,1000)
+  applebt.goto(100,1000)
+  applect.goto(100,1000)
+  appledt.goto(100,1000)
+  appleet.goto(100,1000)
+  appleft.goto(100,1000)
+  applegt.goto(100,1000)
+  applecount = 0
+  triggeredd = False
+  triggerede = False
+  triggeredf = False
+  triggeredg = False
 #TODO Create a function that takes a letter as its parameter, uses that letter to retrieve the
 # corresponding turtle (apple) and causes both to drop from the tree simultaneously. Once the 
 # apple and letter have dropped, call the apple reseting function.
@@ -145,7 +162,7 @@ for i in range(0, 1):
 # to see if the given letter is in the list of letters; if it is, it should drop the corresponding
 # apple.
 def applea(mode):
-  global appleat,drawera
+  global appleat,drawera,applecount
   if mode == 1:
       NewLocation(appleat)
       posx = appleat.xcor()
@@ -161,9 +178,14 @@ def applea(mode):
       move(appleat,"drop")
       drawera.clear()
       tm.sleep(1)
-      applea(1)
+      appleat.reset()
+      appleat.speed(0)
+      appleat.pu()
+      appleat.goto(100,1000)
+      appled(1)
+      applecount += 1
 def appleb(mode):
-  global drawerb
+  global drawerb,applecount
   if mode == 1:
       NewLocation(applebt)
       posx = applebt.xcor()
@@ -179,9 +201,14 @@ def appleb(mode):
       drawerb.clear()
       move(applebt,"drop")
       tm.sleep(1)
-      appleb(1)
+      applebt.reset()
+      applebt.speed(0)
+      applebt.pu()
+      applebt.goto(100,1000)
+      applee(1)
+      applecount += 1
 def applec(mode):
-  global applect,drawerc
+  global applect,drawerc,applecount
   if mode == 1:
       NewLocation(applect)
       posx = applect.xcor()
@@ -197,9 +224,13 @@ def applec(mode):
       drawerc.clear()
       move(applect,"drop")
       tm.sleep(1)
-      applec(1)
+      applect.speed(0)
+      applect.pu()
+      applect.goto(100,1000)
+      applef(1)
+      applecount += 1
 def appled(mode):
-  global appledt,drawerd
+  global appledt,drawerd,applecount,triggeredd
   if mode == 1:
       NewLocation(appledt)
       posx = appledt.xcor()
@@ -215,9 +246,14 @@ def appled(mode):
       drawerd.clear()
       move(appledt,"drop")
       tm.sleep(1)
-      appled(1)
+      appledt.speed(0)
+      appledt.pu()
+      appledt.goto(100,1000)
+      triggeredd = True
+      applecount += 1
+      checkend()
 def applee(mode):
-  global drawere
+  global drawere,applecount,triggerede
   if mode == 1:
       NewLocation(appleet)
       posx = appleet.xcor()
@@ -233,9 +269,14 @@ def applee(mode):
       drawere.clear()
       move(appleet,"drop")
       tm.sleep(1)
-      applee(1)
+      appleet.speed(0)
+      appleet.pu()
+      appleet.goto(100,1000)
+      triggerede = True
+      applecount += 1
+      checkend()
 def applef(mode):
-  global drawerf 
+  global drawerf,applecount,triggeredf
   if mode == 1:
       NewLocation(appleft)
       posx = appleft.xcor()
@@ -251,9 +292,14 @@ def applef(mode):
       drawerf.clear()
       move(appleft,"drop")
       tm.sleep(1)
-      applef(1)
+      appleft.speed(0)
+      appleft.pu()
+      appleft.goto(100,1000)
+      triggeredf = True
+      applecount += 1
+      checkend()
 def appleg(mode):
-  global drawerg
+  global drawerg,applecount,triggeredg
   if mode == 1:
       NewLocation(applegt)
       posx = applegt.xcor()
@@ -269,15 +315,17 @@ def appleg(mode):
       drawerg.clear()
       move(applegt,"drop")
       tm.sleep(1)
-      appleg(1)
-def fireall(mode):
-  applea(mode)
-  appleb(mode)
-  applec(mode)
-  appled(mode)
-  applee(mode)
-  applef(mode)
-  appleg(mode)
+      applegt.speed(0)
+      applegt.pu()
+      applegt.goto(100,1000)
+      triggeredg = True
+      applecount += 1
+      checkend()
+def ending():
+  enddraw = trtl.Turtle()
+  enddraw.pu()
+  enddraw.goto(0,0)
+  enddraw.write("Thanks for Playing!" , align="center", font=("Arial", 55, "bold")) 
 def appleapressed():
   applea(2)
 def applebpressed():
@@ -286,12 +334,25 @@ def applecpressed():
   applec(2)
 def appledpressed():
   appled(2)
+  checkend()
 def appleepressed():
   applee(2)
+  checkend()
 def applefpressed():
   applef(2)
+  checkend()
 def applegpressed():
   appleg(2)
+  checkend()
+def checkend():
+    if triggeredg == True:
+      if triggeredf == True:
+        if triggerede == True:
+          if triggeredd == True:
+            ending()
+    if applecount == 4:
+      appleg(1)
+
 #TODO use the onkeypress method of wn to correlate the functions you defined above with each
 # of the letters that the user might type.
 # onkeypress requires that you name one function that must take
@@ -304,9 +365,11 @@ def listener():
   wn.onkeypress(appleepressed,'e')
   wn.onkeypress(applefpressed,'f')
   wn.onkeypress(applegpressed,'g')
-  print('a')
+  print('listening for key presses')
 #-----function calls-----
-fireall(1)
+applea(1)
+appleb(1)
+applec(1)
 listener()
 wn.listen()
 trtl.mainloop()
