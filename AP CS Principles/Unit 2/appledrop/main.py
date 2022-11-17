@@ -168,6 +168,10 @@ for i in range(0, 1):
 #TODO define a function per letter that you will use in your program. Each function should check
 # to see if the given letter is in the list of letters; if it is, it should drop the corresponding
 # apple.
+
+'''
+functions
+'''
 def applea(mode):
   global appleat,drawera,applecount
   if mode == 1:
@@ -384,10 +388,7 @@ def checkend():
         activatedgd = True
         appleg(1)
 
-#TODO use the onkeypress method of wn to correlate the functions you defined above with each
-# of the letters that the user might type.
-# onkeypress requires that you name one function that must take
-# no arguments to be called when the specified key is pressed.
+
 def listener():
   wn.onkeypress(appleapressed,'a')
   wn.onkeypress(applebpressed,'b')
