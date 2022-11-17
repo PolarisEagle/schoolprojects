@@ -24,9 +24,8 @@ try:
   wn.bgpic(r"C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\appledrop\background.gif")
 except Exception:
   wn.bgpic('background.gif')
-number_of_apples = 5
 #apple = trtl.Turtle()
-speedsetting = 1
+speedsetting = 5
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
 def draw_apple(active_apple):
@@ -38,7 +37,7 @@ def draw_an_A(whichapple):
   posy = apple.ycor()
   drawer = trtl.Turtle()
   drawer.hideturtle()
-  drawer.color("blue")
+  drawer.color("white")
   drawer.pu()
   drawer.goto(posx - 18,posy - 50)
   drawer.pd()
@@ -154,6 +153,14 @@ for i in range(0, 1):
   triggerede = False
   triggeredf = False
   triggeredg = False
+  activateda = False
+  activatedb = False
+  activatedc = False
+  activatedd = False
+  activatede = False
+  activatedf = False
+  activatedg = False
+  activatedgd = False
 #TODO Create a function that takes a letter as its parameter, uses that letter to retrieve the
 # corresponding turtle (apple) and causes both to drop from the tree simultaneously. Once the 
 # apple and letter have dropped, call the apple reseting function.
@@ -169,7 +176,7 @@ def applea(mode):
       posy = appleat.ycor()
       drawera = trtl.Turtle()
       drawera.hideturtle()
-      drawera.color("blue")
+      drawera.color("white")
       drawera.pu()
       drawera.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -192,7 +199,7 @@ def appleb(mode):
       posy = applebt.ycor()
       drawerb = trtl.Turtle()
       drawerb.hideturtle()
-      drawerb.color("blue")
+      drawerb.color("white")
       drawerb.pu()
       drawerb.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -215,7 +222,7 @@ def applec(mode):
       posy = applect.ycor()
       drawerc = trtl.Turtle()
       drawerc.hideturtle()
-      drawerc.color("blue")
+      drawerc.color("white")
       drawerc.pu()
       drawerc.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -237,7 +244,7 @@ def appled(mode):
       posy = appledt.ycor()
       drawerd = trtl.Turtle()
       drawerd.hideturtle()
-      drawerd.color("blue")
+      drawerd.color("white")
       drawerd.pu()
       drawerd.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -260,7 +267,7 @@ def applee(mode):
       posy = appleet.ycor()
       drawere = trtl.Turtle()
       drawere.hideturtle()
-      drawere.color("blue")
+      drawere.color("white")
       drawere.pu()
       drawere.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -283,7 +290,7 @@ def applef(mode):
       posy = appleft.ycor()
       drawerf = trtl.Turtle()
       drawerf.hideturtle()
-      drawerf.color("blue")
+      drawerf.color("white")
       drawerf.pu()
       drawerf.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -306,7 +313,7 @@ def appleg(mode):
       posy = applegt.ycor()
       drawerg = trtl.Turtle()
       drawerg.hideturtle()
-      drawerg.color("blue")
+      drawerg.color("white")
       drawerg.pu()
       drawerg.goto(posx - 18,posy - 50)
       wn.tracer(True)
@@ -327,22 +334,43 @@ def ending():
   enddraw.goto(0,0)
   enddraw.write("Thanks for Playing!" , align="center", font=("Arial", 55, "bold")) 
 def appleapressed():
-  applea(2)
+  global activateda
+  if activateda == False:
+    activateda = True
+    applea(2)
 def applebpressed():
-  appleb(2)
+  global activatedb
+  if activatedb == False:
+    activatedb = True
+    appleb(2)
 def applecpressed():
-  applec(2)
+  global activatedc
+  if activatedc == False:
+    activatedc = True
+    applec(2)
 def appledpressed():
-  appled(2)
+  global activatedd
+  if activatedd == False:
+    activatedd = True
+    appled(2)
   checkend()
 def appleepressed():
-  applee(2)
+  global activatede
+  if activatede == False:
+    activatede = True
+    applee(2)
   checkend()
 def applefpressed():
-  applef(2)
+  global activatedf
+  if activatedf == False:
+    activatedf = True
+    applef(2)
   checkend()
 def applegpressed():
-  appleg(2)
+  global activatedg
+  if activatedg == False:
+    activatedg = True
+    appleg(2)
   checkend()
 def checkend():
     if triggeredg == True:
@@ -351,7 +379,10 @@ def checkend():
           if triggeredd == True:
             ending()
     if applecount == 4:
-      appleg(1)
+      global activatedgd
+      if activatedgd == False:
+        activatedgd = True
+        appleg(1)
 
 #TODO use the onkeypress method of wn to correlate the functions you defined above with each
 # of the letters that the user might type.
