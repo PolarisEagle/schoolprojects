@@ -10,8 +10,9 @@ from re import A
 import turtle as trtl
 import random as rand
 import time as t
+import string
 try:
-  leaderboard_file_name = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\a122_leaderboard.txt'
+  leaderboard_file_name = "a122_leaderboard.txt"
 except FileNotFoundError:
   print('warn, file path not found')
   try:

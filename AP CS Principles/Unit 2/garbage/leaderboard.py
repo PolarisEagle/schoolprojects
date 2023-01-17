@@ -5,15 +5,13 @@ P1 CS P
 '''
 # leaderboard.py
 # The leaderboard module to be used in Activity 1.2.2
-
 # set the levels of scoring
 bronze_score = 15
 silver_score = 20
 gold_score = 25
-
 # return names in the leaderboard file
 def get_names(file_name):
-  global names
+  global names,leader_name
   leaderboard_file = open(file_name, "r")  # be sure you have created this
     
   # use a for loop to iterate through the content of the file, one line at a time
@@ -23,8 +21,8 @@ def get_names(file_name):
     leader_name = ""
     index = 0
     while (line[index] != ","):
+      leader_name = leader_name + line[index]
       index = index + 1
-      print(leader_name)
     names.append(leader_name)
     # TODO 1: use a while loop to read the leader name from the line (format is "leader_name,leader_score")
 
@@ -51,18 +49,20 @@ def get_scores(file_name):
         index = index + 1
     index += 1 
     # TODO 4: use a while loop to get the score
+    index = 0
     while (line[index] != "\n"):
         leader_score = leader_score + line[index] 
         index = index + 1
     # TODO 5: add the player score to the scores list
     print(leader_score)
+    print('leader name is ', leader_name)
+    leader_score = leader_score.replace(leader_name,'')
     leader_score = int(leader_score)
     print(type(leader_score))
     print(scores)
     scores.append(leader_score)
   leaderboard_file.close()
   # TODO 7: return the scores in place of the empty list
-  print(scores)
   return [scores]
 
 
