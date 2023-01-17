@@ -169,6 +169,8 @@ for i in range(0, 1):
 # to see if the given letter is in the list of letters; if it is, it should drop the corresponding
 # apple.
 
+items = ["hamburger","chicken","heal","sword","bow"]
+
 '''
 functions
 '''
