@@ -1,5 +1,5 @@
+Fitzpatrick,7
 Josh,6
 Macky,5
 Miguel,4
 Evaaan,3
-Wayfarer,2
