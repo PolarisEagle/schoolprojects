@@ -25,14 +25,15 @@ def get_names(file_name):
     while (line[index] != ","):
       leader_name = leader_name + line[index] 
       index = index + 1
-      print(leader_name)
+    names.append(line[0:index])
     # TODO 1: use a while loop to read the leader name from the line (format is "leader_name,leader_score")
 
     # TODO 2: add the player name to the names list
   
   leaderboard_file.close()
   #  TODO 6: return the names list in place of the empty list
-  return [names]
+  print(names)
+  return names
 
   
 # return scores from the leaderboard file
@@ -44,34 +45,41 @@ def get_scores(file_name):
   for line in leaderboard_file:
     leader_score = ""    
     index = 0
-
+    index2 = 0
     # TODO 3: use a while loop to index beyond the comma, skipping the player's name
-    while (line[index] != ","):
-        index = index + 1
-    index += 1 
+    while (line[index2] != ","):
+        index2 += 1
+        print(index2)
     # TODO 4: use a while loop to get the score
     while (line[index] != "\n"):
         leader_score = leader_score + line[index] 
         index = index + 1
+    index2 += 1
+    plrscore = line[index2:index]
+    print(plrscore)
+    scores.append(plrscore)
     # TODO 5: add the player score to the scores list
-    print(leader_score)
-    leader_score = int(leader_score)
-    print(type(leader_score))
   leaderboard_file.close()
   # TODO 7: return the scores in place of the empty list
-  return [scores]
+  print(scores)
+  return scores
 
 
 # update leaderboard by inserting the current player and score to the list at the correct position
 def update_leaderboard(file_name, leader_names, leader_scores,  player_name, player_score):
-
+  global passed,userscore
+  passed = False
   index = 0
+  print(leader_scores)
   # TODO 8: loop through all the scores in the existing leaderboard list
   for index in range(len(leader_names)):
     print(type(player_score))
     # TODO 9: check if this is the position to insert new score at
-    if (player_score >= leader_scores[index]):
+    if (player_score >= int(leader_scores[index])):   # TODO 10: insert new player and score
         scores.insert(index, player_score)
+        if leader_scores[index] >= 5:
+          passed = True
+          userscore = player_score
         names.insert(index, player_name)
     if (len(names) > 5): 
         names.pop(5)
@@ -80,22 +88,17 @@ def update_leaderboard(file_name, leader_names, leader_scores,  player_name, pla
     else:
       index = index + 1
 
-  
-  # TODO 10: insert new player and score
-
+    
   # TODO 11: keep both lists at 5 elements only (top 5 players)
   
   # TODO 12: store the latest leaderboard back in the file
   
-  '''
   leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
  
   # TODO 13 loop through all the leaderboard elements and write them to the the file
-  for   :
+  for index in range(len(leader_names)):
     leaderboard_file.write(leader_names[index] + "," + str(leader_scores[index]) + "\n")
-
   leaderboard_file.close()
-   '''
   
 
 # draw leaderboard and display a message to player
@@ -122,10 +125,10 @@ def draw_leaderboard(high_scorer, leader_names, leader_scores, turtle_object, pl
   turtle_object.pendown()
 
   # TODO 14: display message about player making/not making leaderboard
-  '''
-    turtle_object.write("Congratulations!\nYou made the leaderboard!", font=font_setup)
-    turtle_object.write("Sorry!\nYou didn't make the leaderboard.\nMaybe next time!", font=font_setup)
-  '''
+
+  turtle_object.write("Congratulations!\nYou made the leaderboard!", font=font_setup)
+  turtle_object.write("Sorry!\nYou didn't make the leaderboard.\nMaybe next time!", font=font_setup)
+
 
   # move turtle to a new line
   turtle_object.penup()
@@ -133,8 +136,8 @@ def draw_leaderboard(high_scorer, leader_names, leader_scores, turtle_object, pl
   turtle_object.pendown()
   
   # TODO 15: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
-  '''
-    turtle_object.write("You earned a gold medal!", font=font_setup)
-    turtle_object.write("You earned a silver medal!", font=font_setup)
-    turtle_object.write("You earned a bronze medal!", font=font_setup)
-  '''
+  
+  turtle_object.write("You earned a gold medal!", font=font_setup)
+  turtle_object.write("You earned a silver medal!", font=font_setup)
+  turtle_object.write("You earned a bronze medal!", font=font_setup)
+  

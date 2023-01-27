@@ -9,7 +9,7 @@ from re import A
 import turtle as trtl
 import random as rand
 import time as t
-leaderboard_file_name = r'C:\Users\454980\Documents\GitHub\guessnumber\AP CS Principles\Unit 2\a122_leaderboard.txt'
+leaderboard_file_name = 'a122_leaderboard.txt'
 import leaderboard as lb
 #-----game configuration----
 spot_color = "pink"
@@ -134,9 +134,9 @@ def manage_leaderboard():
   # get the names and scores from the leaderboard file
   leader_names_list = lb.get_names(leaderboard_file_name)
   leader_scores_list = lb.get_scores(leaderboard_file_name)
-
+  print(type(score))
   # show the leaderboard with or without the current player
-  if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
+  if (len(leader_scores_list) < 5 or score >= int(leader_scores_list[4])):
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
     lb.draw_leaderboard(True, leader_names_list, leader_scores_list, spot, score)
 

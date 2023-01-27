@@ -1,5 +1,5 @@
-Pat,50
-Jack,42
-Jill,38
-Macky,59
-Check,50
+Macky,8
+ba,7
+Check,6
+Pat,5
+Jack,4
