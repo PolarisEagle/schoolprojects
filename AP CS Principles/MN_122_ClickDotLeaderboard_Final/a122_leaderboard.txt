@@ -1,5 +1,5 @@
-Macky,8
-ba,7
-Check,6
-Pat,5
-Jack,4
+Josh,6
+Macky,5
+Miguel,4
+Evaaan,3
+Wayfarer,2
