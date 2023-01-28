@@ -75,13 +75,13 @@ def update_leaderboard(file_name, leader_names, leader_scores,  player_name, pla
   for index in range(len(leader_names)):
     print(type(player_score))
     # TODO 9: check if this is the position to insert new score at
+    userscore = player_score
     if (player_score >= int(leader_scores[index])):   # TODO 10: insert new player and score
         scores.insert(index, player_score)
         print(leader_scores[index])
         if leader_scores[index] >= 5:
           passed = True
           print(passed)
-          userscore = player_score
         names.insert(index, player_name)
     if (len(names) > 5): 
         names.pop(5)

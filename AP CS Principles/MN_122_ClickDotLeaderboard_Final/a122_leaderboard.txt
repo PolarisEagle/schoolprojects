@@ -1,5 +1,5 @@
 Fitz,7
 Pat,6
 Rick,6
-Macky,5
-Miguel,4
+Maximus,5
+Mittens,1
