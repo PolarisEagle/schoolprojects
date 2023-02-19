@@ -28,23 +28,23 @@ def finditem(item):
   else:
     return False
   
-def usehealthpotion():
+def eatmeat():
   global health
-  finditem('healthpotion')
-  print("You currently have, " + str(itemsleft + 1) + ' healthpotion/s.')
+  finditem('meat')
+  print("You currently have, " + str(itemsleft + 1) + ' piece/s of meat.')
   healed = False
-  if finditem('healthpotion') == True:
-      print('You used a healthpotion! Health Increased from ' + str(health) +
+  if finditem('meat') == True:
+      print('You used a meat! Health Increased from ' + str(health) +
             ' to ' + str(health + 50))
       health += 50
       items.pop(itemindex) #removes item from the list
-      print('you have ' + str(itemsleft) + ' healthpotion/s left.')
+      print('you have ' + str(itemsleft) + ' piece/s of meat left.')
       healed = True
   if healed == False:
     print("Sorry, You do not have any health potions.")
 def chance():
   global chancerate
-  chancerate = 50
+  chancerate = 0
   chanceask = input('would you like to increase your chances when hunting? Your current chance is a ' + str(chancerate) + "% success chance. (y/n)" )
   while chanceask == "y":
     print("OK. Looking for items to increase your chance.")
@@ -67,7 +67,7 @@ def chance():
       
 def checkhunt(chance):
   if chance == None:
-    chance = 50
+    chance = 0
   chance = int(chance)
   global bulletboxes, rifles, canhunt
   rifles = 0
@@ -104,7 +104,6 @@ def checkhunt(chance):
           while x != 5:
             items.append('meat')
             x += 1
-            
         else:
           print('Failed, you were unable to find anything.')
 
@@ -122,7 +121,7 @@ def hunt():
 def options():
   print("You have mutliple actions you can take.")
   print("1 - check stats")
-  print("2 - drink healthpotion")
+  print("2 - eat meat")
   print("3 - hunt for food")
   print("4 - walk around")
   print("5 continue")
@@ -131,7 +130,7 @@ def options():
     print('stats')
     print('health: ' + str(health))
   elif option == "2":
-    usehealthpotion()
+    eatmeat()
   elif option == "3":
     chances = chance()
     print(chances)
