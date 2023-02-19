@@ -1,6 +1,7 @@
 import random
 import os 
 import time
+os.system('cls' if os.name == 'nt' else 'clear')  
 input('Hello there, would you like to play a game?')
 #defiitions
 items = [
@@ -44,14 +45,13 @@ def eatmeat():
     print("Sorry, You do not have any health potions.")
 def chance():
   global chancerate
-  chancerate = 0
-  chanceask = input('would you like to increase your chances when hunting? Your current chance is a ' + str(chancerate) + "% success chance. (y/n)" )
+  chancerate = 50
+  chanceask = input('would you like to increase your chances when hunting? Your current chance is a ' + str(chancerate) + "% success chance. (y/n)\n" )
   while chanceask == "y":
     print("OK. Looking for items to increase your chance.")
     if finditem('meat') == True:
       eatmeat = input("You have, " + str(itemsleft + 1) + " pieces of meat. Would you like to eat meat to increase your chances by 25%?")
       if eatmeat == "y":
-        print(chancerate)
         chancerate += 25
         print("OK, chance increased to " + str(chancerate))
         items.pop(itemindex)
@@ -62,12 +62,10 @@ def chance():
       continue
     else:
       chanceask = "n"
-      print(chancerate)
       return chancerate
-      
 def checkhunt(chance):
   if chance == None:
-    chance = 0
+    chance = 50
   chance = int(chance)
   global bulletboxes, rifles, canhunt
   rifles = 0
@@ -88,7 +86,6 @@ def checkhunt(chance):
     text2 = " rifle."
   else:
     text2 = " rifles."
-  print(bulletboxes)
   if bulletboxes >= 1:
     if rifles >= 1:
       canhunt = True
@@ -96,6 +93,7 @@ def checkhunt(chance):
             text1 + " of ammunition and " + str(rifles) + text2)
       wanttohunt = input('Would you like to hunt?')
       if wanttohunt == "y":
+        os.system('cls' if os.name == 'nt' else 'clear')  
         print("Ok, you are hunting with a " + str(chance) + "% success chance.")
         generated = random.randint(1, 100)
         if chance >= generated:
@@ -106,6 +104,7 @@ def checkhunt(chance):
             x += 1
         else:
           print('Failed, you were unable to find anything.')
+        input('Press ENTER to continue...')
 
   if canhunt == False:
     print("You are unable to hunt this round. You have" + str(rifles) + " " +
@@ -119,6 +118,7 @@ def hunt():
     print('okay')
 
 def options():
+  os.system('cls' if os.name == 'nt' else 'clear')  
   print("You have mutliple actions you can take.")
   print("1 - check stats")
   print("2 - eat meat")
@@ -133,12 +133,7 @@ def options():
     eatmeat()
   elif option == "3":
     chances = chance()
-    print(chances)
     checkhunt(chances)
-    if canhunt == True:
-      hunt()
-    else:
-      print("Sorry, can't hunt this round.")
   elif option == "4":
     pass
   elif option == "5":
@@ -150,6 +145,7 @@ def newround():
   print('baller')
   options()
   print('You walk into a vast jungle.')
+  newround()
 
 
 newround()
