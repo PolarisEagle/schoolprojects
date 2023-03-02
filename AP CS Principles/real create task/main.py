@@ -5,7 +5,8 @@ csp p1
 from random import *
 import sys
 def start():
-    global number,prevguesses,turns,won
+    global number,prevguesses,turns,won,hintused
+    hintused = False
     won = False
     turns = 0
     number = randint(1,100)
@@ -26,8 +27,12 @@ def start():
     guess()
 
 def guess():
-    global turns
+    global turns,hintused
     response = ''
+    if turns == 5:
+        if hintused == False:
+            hintused = True
+            hint()
     try:
         response = int(input('What number do you think it is?\n'))
     except:
@@ -50,8 +55,6 @@ def verifyguess(guessednumber):
         print('Your number is too low, lowest guess is 1.')
         guess()
     turns += 1
-    if turns == 5:
-        if number.len
     prevguesses.append(guessednumber)
     if guessednumber > number:
         print("Your guess of " + str(guessednumber) + " was too high. Please try again.")
@@ -62,5 +65,18 @@ def verifyguess(guessednumber):
     if guessednumber == number:
         print('Congratulations! You got it right! It took you ' + str(turns) + ' turns.')
         won = True
-    print(prevguesses)
+
+def hint():
+    numbers = [2,3,4,5,6,7,8,9]
+    output = False
+    for i in numbers:
+        if number%i == 0:
+            if output == False:
+                print("Here's a hint! The number is a multiple of " + str(i))
+                output = True
+    if output == False:
+        print("The number is not divisible by 7, 5, 3 or 2.")
+
+                
+                
 start()
