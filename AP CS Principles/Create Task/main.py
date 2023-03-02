@@ -1,6 +1,7 @@
 import random
 import os 
 import time
+os.system('cls' if os.name == 'nt' else 'clear')  
 input('Hello there, would you like to play a game?')
 #defiitions
 items = [
@@ -28,30 +29,29 @@ def finditem(item):
   else:
     return False
   
-def usehealthpotion():
+def eatmeat():
   global health
-  finditem('healthpotion')
-  print("You currently have, " + str(itemsleft + 1) + ' healthpotion/s.')
+  finditem('meat')
+  print("You currently have, " + str(itemsleft + 1) + ' piece/s of meat.')
   healed = False
-  if finditem('healthpotion') == True:
-      print('You used a healthpotion! Health Increased from ' + str(health) +
+  if finditem('meat') == True:
+      print('You used a meat! Health Increased from ' + str(health) +
             ' to ' + str(health + 50))
       health += 50
       items.pop(itemindex) #removes item from the list
-      print('you have ' + str(itemsleft) + ' healthpotion/s left.')
+      print('you have ' + str(itemsleft) + ' piece/s of meat left.')
       healed = True
   if healed == False:
     print("Sorry, You do not have any health potions.")
 def chance():
   global chancerate
   chancerate = 50
-  chanceask = input('would you like to increase your chances when hunting? Your current chance is a ' + str(chancerate) + "% success chance. (y/n)" )
+  chanceask = input('would you like to increase your chances when hunting? Your current chance is a ' + str(chancerate) + "% success chance. (y/n)\n" )
   while chanceask == "y":
     print("OK. Looking for items to increase your chance.")
     if finditem('meat') == True:
       eatmeat = input("You have, " + str(itemsleft + 1) + " pieces of meat. Would you like to eat meat to increase your chances by 25%?")
       if eatmeat == "y":
-        print(chancerate)
         chancerate += 25
         print("OK, chance increased to " + str(chancerate))
         items.pop(itemindex)
@@ -62,9 +62,7 @@ def chance():
       continue
     else:
       chanceask = "n"
-      print(chancerate)
       return chancerate
-      
 def checkhunt(chance):
   if chance == None:
     chance = 50
@@ -88,7 +86,6 @@ def checkhunt(chance):
     text2 = " rifle."
   else:
     text2 = " rifles."
-  print(bulletboxes)
   if bulletboxes >= 1:
     if rifles >= 1:
       canhunt = True
@@ -96,6 +93,7 @@ def checkhunt(chance):
             text1 + " of ammunition and " + str(rifles) + text2)
       wanttohunt = input('Would you like to hunt?')
       if wanttohunt == "y":
+        os.system('cls' if os.name == 'nt' else 'clear')  
         print("Ok, you are hunting with a " + str(chance) + "% success chance.")
         generated = random.randint(1, 100)
         if chance >= generated:
@@ -104,9 +102,9 @@ def checkhunt(chance):
           while x != 5:
             items.append('meat')
             x += 1
-            
         else:
           print('Failed, you were unable to find anything.')
+        input('Press ENTER to continue...')
 
   if canhunt == False:
     print("You are unable to hunt this round. You have" + str(rifles) + " " +
@@ -120,9 +118,10 @@ def hunt():
     print('okay')
 
 def options():
+  os.system('cls' if os.name == 'nt' else 'clear')  
   print("You have mutliple actions you can take.")
   print("1 - check stats")
-  print("2 - drink healthpotion")
+  print("2 - eat meat")
   print("3 - hunt for food")
   print("4 - walk around")
   print("5 continue")
@@ -131,15 +130,10 @@ def options():
     print('stats')
     print('health: ' + str(health))
   elif option == "2":
-    usehealthpotion()
+    eatmeat()
   elif option == "3":
     chances = chance()
-    print(chances)
     checkhunt(chances)
-    if canhunt == True:
-      hunt()
-    else:
-      print("Sorry, can't hunt this round.")
   elif option == "4":
     pass
   elif option == "5":
@@ -151,6 +145,7 @@ def newround():
   print('baller')
   options()
   print('You walk into a vast jungle.')
+  newround()
 
 
 newround()
