@@ -1,8 +1,18 @@
+'''
+Miles N.
+AP CS P 
+P1 
+2/18/2023
+'''
+#import modules 
 import random
 import os 
 import time
-os.system('cls' if os.name == 'nt' else 'clear')  
+
+os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal
+
 input('Hello there, would you like to play a game?')
+
 #defiitions
 items = [
   "sword", "shield", "healthpotion", "healthpotion", "hamburger", "rifle",
@@ -10,7 +20,7 @@ items = [
 ]
 health = 100
 
-
+#function to check if an item is in the user's inventory
 def finditem(item):
   global itemindex,itemsleft,items
   itemindex,itemsleft,index = 0,0,0
@@ -28,7 +38,8 @@ def finditem(item):
     return True
   else:
     return False
-  
+
+#function to allow the user to eat meat if they have any 
 def eatmeat():
   global health
   finditem('meat')
@@ -43,6 +54,8 @@ def eatmeat():
       healed = True
   if healed == False:
     print("Sorry, You do not have any health potions.")
+
+#function to allow the user to increase their chance of success when hunting
 def chance():
   global chancerate
   chancerate = 50
@@ -63,6 +76,8 @@ def chance():
     else:
       chanceask = "n"
       return chancerate
+
+#function to hunt and to check if user can hunt
 def checkhunt(chance):
   if chance == None:
     chance = 50
@@ -110,13 +125,7 @@ def checkhunt(chance):
     print("You are unable to hunt this round. You have" + str(rifles) + " " +
           text2 + " and " + str(bulletboxes) + " " + text1)
 
-
-def hunt():
-  askuser = input('Would you like to hunt this round? \n')
-  askuser = askuser.capitalize()
-  if askuser == "Y":
-    print('okay')
-
+# function to tell the leader the options the user has
 def options():
   os.system('cls' if os.name == 'nt' else 'clear')  
   print("You have mutliple actions you can take.")
@@ -141,6 +150,8 @@ def options():
   else:
     print("Invalid Option, please try again.")
     options()
+  
+#function to initialize a new round
 def newround():
   print('baller')
   options()
