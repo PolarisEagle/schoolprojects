@@ -2,6 +2,8 @@
 guessnumber.py
 csp p1
 '''
+import turtle as trtl
+import time as t
 from random import *
 import sys
 def start():
@@ -27,6 +29,8 @@ def start():
     guess()
 
 def guess():
+    if won == True:
+        start()
     global turns,hintused
     response = ''
     if turns == 5:
@@ -75,8 +79,11 @@ def hint():
                 print("Here's a hint! The number is a multiple of " + str(i))
                 output = True
     if output == False:
-        print("The number is not divisible by 7, 5, 3 or 2.")
+        print("The number is a prime number.")
 
                 
                 
 start()
+while True:
+    if won == True:
+        start()
