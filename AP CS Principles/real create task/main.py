@@ -17,7 +17,7 @@ def start():
     prevguesses = []
     loop = False
     response = ''
-    layout = [[sg.Text("Would you like to play a game?", key="line1")],[sg.Text("Input", key="-line2-"), sg.InputText()], [sg.Button("YES", key="-line3b1-"),sg.Button("NO", key="-line3b2-")]]
+    layout = [[sg.Text("Would you like to play a game?", key="line1")], [sg.Button("YES", key="-line3b1-"),sg.Button("NO", key="-line3b2-")]]
     window = sg.Window("Demo", layout)
     while True:
         event, values = window.read()
@@ -39,18 +39,20 @@ def guess():
         if hintused == False:
             hintused = True
             hint()
-    try:
-        while True:      
-            event, values = window.read()
-            layout = [[sg.Text("What number do you think it is?", key="line1")],[sg.Text("Input", key="-line2-"), sg.InputText()], [sg.Button("ENTER", key="-line3b1-")]]  
-            if event == "-line3b1-":      
-                break    
-        window.close()
-        window = sg.Window("Demo", layout)
+    layout = [[sg.Text("What number do you think it is?", key="line1")],[sg.Text("Input", key="-line2-"), sg.InputText()], [sg.Button("ENTER", key="-enter"), sg.Button("EXIT")]]  
+    window = sg.Window("Demo", layout)
+    while True:
+        event, self = window.read()
+        if event == sg.WINDOW_CLOSED or event == 'Quit':
+            break
+        elif event == '-enter':
+            print(self)
+            window.close()
+            break
+        elif event == 'EXIT':
+            sys.exit()
         #response = int(input('What number do you think it is?\n'))
-    except:
-        print('Sorry, what you entered was not a valid number. Please try again.')
-        guess()
+        #print('Sorry, what you entered was not a valid number. Please try again.')
     verifyguess(response)
 
 def verifyguess(guessednumber):
@@ -61,6 +63,9 @@ def verifyguess(guessednumber):
             print('You already guessed ' + str(i) + ". Please try again.")
             guess()
     if guessednumber == None:
+        guess()
+    if guessednumber != int:
+        print('Your guess is not a number, error processing request, please try again.')
         guess()
     if guessednumber >= 101:
         print("Your guess is too high. Max number is 100.")
