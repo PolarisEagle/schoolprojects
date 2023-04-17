@@ -2,12 +2,13 @@
 guessnumber.py
 csp p1
 '''
+import PySimpleGUI as sg
 import turtle as trtl
 import time as t
 from random import *
 import sys
 def start():
-    global number,prevguesses,turns,won,hintused
+    global number,prevguesses,turns,won,hintused,layout
     hintused = False
     won = False
     turns = 0
@@ -16,31 +17,40 @@ def start():
     prevguesses = []
     loop = False
     response = ''
-    while loop == False:
-        response = input("Would you like to play a game? (y/n)\n")
-        if response == "y":
-            print("Starting Game!")
-            loop = True
-        elif response == "n":
-            print('Okay, exitting program.')
+    layout = [[sg.Text("Would you like to play a game?", key="line1")],[sg.Text("Input", key="-line2-"), sg.InputText()], [sg.Button("YES", key="-line3b1-"),sg.Button("NO", key="-line3b2-")]]
+    window = sg.Window("Demo", layout)
+    while True:
+        event, values = window.read()
+        # End program if user closes window or
+        # presses the OK button
+        if event == "-line3b1-" or event == sg.WIN_CLOSED:
+            print('y')
+            break
+        if event == "-line3b2-" or event == sg.WIN_CLOSED:
             sys.exit()
-        else:
-            print("Sorry, your response was not valid. Please answer with a lowecase 'y' or 'n'")
     guess()
 
 def guess():
+    global turns,hintused
     if won == True:
         start()
-    global turns,hintused
     response = ''
     if turns == 5:
         if hintused == False:
             hintused = True
             hint()
     try:
-        response = int(input('What number do you think it is?\n'))
+        while True:      
+            event, values = window.read()
+            layout = [[sg.Text("What number do you think it is?", key="line1")],[sg.Text("Input", key="-line2-"), sg.InputText()], [sg.Button("ENTER", key="-line3b1-")]]  
+            if event == "-line3b1-":      
+                break    
+        window.close()
+        window = sg.Window("Demo", layout)
+        #response = int(input('What number do you think it is?\n'))
     except:
         print('Sorry, what you entered was not a valid number. Please try again.')
+        guess()
     verifyguess(response)
 
 def verifyguess(guessednumber):
