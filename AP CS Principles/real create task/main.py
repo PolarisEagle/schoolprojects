@@ -66,7 +66,6 @@ def guess():
         elif event == 'EXIT':
             sys.exit()
         #response = int(input('What number do you think it is?\n'))
-        #print('Sorry, what you entered was not a valid number. Please try again.')
     
     try:
         int(self[0])
