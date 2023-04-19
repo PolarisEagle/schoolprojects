@@ -14,6 +14,7 @@ def start(skip):
     turns = 0
     number = randint(1,100)
     print(number)
+    print('This game is not played in the terminal. Please open the UI prompt.')
     prevguesses = []
     loop = False
     response = ''
@@ -32,7 +33,7 @@ def start(skip):
     guess()
 
 def winmodule():
-    print('won')
+    #print('won')
     layout2 = [[sg.Text("Would you like to play again?", key="line1")], [sg.Button("YES"), sg.Button("NO")]]  
     victorywindow = sg.Window("Demo", layout2)
     while True:
@@ -59,7 +60,7 @@ def guess():
         if event == sg.WINDOW_CLOSED or event == 'Quit':
             sys.exit()
         elif event == '-enter':
-            print(self[0])
+            #print(self[0])
             window.close()
             break
         elif event == 'EXIT':
@@ -76,12 +77,10 @@ def guess():
 
 def verifyguess(guessednumber):
     global turns,prevguesses
-    print(prevguesses)
     int(guessednumber)
     for i in prevguesses: 
         if guessednumber == i:
-            sg.popup('You already guessed ' + str(i) + ". Please try again.")
-            guess()
+            sg.popup('You already guessed ' + str(i) + ". Please try again. You have previously guessed" + str(prevguesses) + ".")
     if guessednumber == None:
         guess()
     if guessednumber >= 101:
@@ -111,7 +110,7 @@ def hint():
                 sg.popup("Here's a hint! The number is a multiple of " + str(i))
                 output = True
     if output == False:
-        sg.popup("The number is a prime number.")
+        sg.popup("Here's a hint! The number is a prime number.")
 
                 
                 
